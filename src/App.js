@@ -18,8 +18,7 @@ class App extends Component {
 
     this.changeColor = this.changeColor.bind(this);
     this.changeAlpha = this.changeAlpha.bind(this);
-    this.changeAlpha = this.changeAlpha.bind(this);
-  }
+    }
 
   changeColor(e) {
     e.preventDefault();
@@ -27,8 +26,8 @@ class App extends Component {
     if (e.target.value < 0 || e.target.value > 255) {
       this.setState({error: "Red, Green, and Blue values must be between 0 and 255"})
     } else {
-      this.setState({[e.target.name]: e.target.value})
-      this.setState({rgba: `rgba(${this.state.red}, ${this.state.green}, ${this.state.blue}, ${this.state.alpha})`, error: ""})
+      this.setState({[e.target.name]: e.target.value},
+      this.setState({rgba: `rgba(${this.state.red}, ${this.state.green}, ${this.state.blue}, ${this.state.alpha})`, error: ""}))
     }
   }
 
