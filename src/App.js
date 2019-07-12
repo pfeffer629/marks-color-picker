@@ -12,7 +12,6 @@ class App extends Component {
       green: "0",
       blue: "0",
       alpha: "1",
-      rgba: "rgba(0,0,0,1)",
       error: ""
     }
 
@@ -26,14 +25,12 @@ class App extends Component {
     if (e.target.value < 0 || e.target.value > 255) {
       this.setState({error: "Red, Green, and Blue values must be between 0 and 255"})
     } else {
-      this.setState({[e.target.name]: e.target.value},
-      this.setState({rgba: `rgba(${this.state.red}, ${this.state.green}, ${this.state.blue}, ${this.state.alpha})`, error: ""}))
+      this.setState({[e.target.name]: e.target.value, error: ""})
     }
   }
 
   changeAlpha(value) {
-    this.setState({alpha: parseFloat(value.x.toFixed(2))})
-    this.setState({rgba: `rgba(${this.state.red}, ${this.state.green}, ${this.state.blue}, ${this.state.alpha})`, error: ""})
+    this.setState({alpha: parseFloat(value.x.toFixed(2)), error: ""})
   }
 
   render() {
@@ -47,7 +44,6 @@ class App extends Component {
           type="number" 
           name={color} 
           onChange={this.changeColor}
-          onFocus={this.onFocus}
           style={{borderColor: color}}
           value={this.state[color]}
         />
@@ -55,7 +51,7 @@ class App extends Component {
     )
 
     return (
-      <div className="App" style={{backgroundColor: this.state.rgba}}>
+      <div className="App" style={{backgroundColor: `rgba(${this.state.red}, ${this.state.green}, ${this.state.blue}, ${this.state.alpha})`}}>
         <div className="Container">
           <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTMGAgvreMobH7a6cFVGryY1zBrdhT28GIbph-hpKlqsCQSnR9i" />
           <h2>Mark's Color Picker</h2>
